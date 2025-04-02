@@ -1,75 +1,130 @@
 <!DOCTYPE html>
-<html lang = "en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Student Form</title>
-        <script src="lab4c_scripts.js" defer></script>
-        <style>
-            body{
-                text-align: center;
-                margin: 0 auto;
-                padding: 20px;
-            }
-
-            button {
-                margin: 10px;
-                padding: 5px 15px;
-                width: 210px;
-            }
-
-            input, select{
-                width: 200px;
-                margin: 5px;
-                padding: 3px;
-            }
-
-            table{
-                border: 0px;
-                width: 100%;
-                margin: 20px auto;
-            }
-
-            th, td{
-                text-align: center;
-                border: 0px;
-            }
-        </style>
-    </head>
-    <body>
-        <button onclick="time_now()">Show Current Date</button>
-        <p id = "displayDate"></p>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Form</title>
+    <script src="lab4c_scripts.js" defer></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: url('bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.822);
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(93, 134, 53, 0.336);
+            width: 80%; 
+            max-width: 800px; 
+            border-radius: 2px;
+            text-align: center;
+        }
+        h2 {
+            color: #413425;
+            margin-bottom: 15px;
+        }
+        button {
+            background: #dd7c20;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+            width: 100%; 
+            max-width: 200px;
+        }
+        button:hover {
+            background: #af631d;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            border: 1px solid #413425;
+            border-radius: 5px;
+        }
+        #studentList, #searchResults {
+            margin-top: 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: rgb(252, 245, 233);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #413425;
+            text-align: center;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background: #dd7c20;
+            color: rgb(245, 230, 216);
+        }
+        #studentList {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button onclick="time_now()">Show Current Date</button> 
+        <br>
+        <br>
+        <p id="displayDate"></p>
+        <br>
         <h2>Add Student</h2>
         <form id="studentForm" onsubmit="validateForm(event)">
-            <div>
-                <label for="studentNumber">Student Number: </label><br>
-                <input type="number" id="studentNumber" required><br><br>
-                <label for="name">Name:</label><br>
-                <input type="text" id="name" required><br><br>
-                <label for="age">Age:</label><br>
-                <input type="number" id="age" required><br><br>
-                <label for="email">UP Email:</label><br>
-                <input type="email" id="upEmail" required><br><br>
-                <label for="course">Course:</label><br>
-                <select id="course">
-            </div>
+            <label for="studentNumber">Student Number:</label>
+            <input type="number" id="studentNumber" required>
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+            <label for="age">Age:</label>
+            <input type="number" id="age" required>
+            <label for="email">UP Email:</label>
+            <input type="email" id="upEmail" required>
+            <label for="course">Course:</label>
+            <select id="course">
                 <option value="BA Food Appreciation">BA Food Appreciation</option>
                 <option value="BA Applied Poetry of the Future">BA Applied Poetry of the Future</option>
                 <option value="BS Computer Repair Shop">BS Computer Repair Shop</option>
                 <option value="BS Video Gaming">BS Video Gaming</option>
                 <option value="BS Installing and Downloading">BS Installing and Downloading</option>
-            </select><br><br>
+            </select>
             <button type="submit">Submit</button>
         </form>
+    </div>
 
+    <div class="container">
         <h2>Search Student</h2>
-        <label for="searchStudentNum">Search for Student Number: </label><br><br>
-        <input type="text" id="searchStudentNum" placeholder="Enter student number"><br><br>
+        <input type="text" id="searchStudentNum" placeholder="Enter student number">
         <button onclick="searchStudent()">Search</button>
         <p id="searchResults"></p>
-        
+    </div>
+
+    <div class="container">
         <h2>Display ALL Students</h2>
         <button onclick="displayStudents()">Display All Students</button>
         <p id="studentList"></p>
-    </body>
+    </div>
+</body>
 </html>
