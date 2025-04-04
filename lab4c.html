@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@
             margin: 0;
             padding: 0;
         }
+
         body {
             background: url('bg.jpg') no-repeat center center fixed;
             background-size: cover;
@@ -21,19 +23,22 @@
             justify-content: center;
             padding: 20px;
         }
+
         .container {
             background: rgba(255, 255, 255, 0.822);
             padding: 30px;
             box-shadow: 0 4px 8px rgba(93, 134, 53, 0.336);
-            width: 80%; 
-            max-width: 800px; 
+            width: 80%;
+            max-width: 800px;
             border-radius: 2px;
             text-align: center;
         }
+
         h2 {
             color: #413425;
             margin-bottom: 15px;
         }
+
         button {
             background: #dd7c20;
             color: white;
@@ -43,22 +48,28 @@
             cursor: pointer;
             margin-top: 10px;
             transition: 0.3s;
-            width: 100%; 
+            width: 100%;
             max-width: 200px;
         }
+
         button:hover {
             background: #af631d;
         }
-        input, select {
+
+        input,
+        select {
             width: 100%;
             padding: 8px;
             margin: 8px 0;
             border: 1px solid #413425;
             border-radius: 5px;
         }
-        #studentList, #searchResults {
+
+        #studentList,
+        #searchResults {
             margin-top: 15px;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -69,39 +80,61 @@
             border: 1px solid #413425;
             text-align: center;
         }
-        th, td {
+
+        th,
+        td {
             padding: 10px;
             border: 1px solid #ddd;
         }
+
         th {
             background: #dd7c20;
             color: rgb(245, 230, 216);
         }
+
         #studentList {
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
         }
+
+        .error {
+            color: #b80000;
+            background-color: #ffe6e6;
+            border: 1px solid #b80000;
+            padding: 8px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        .error.hidden {
+            display: none;
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <button onclick="time_now()">Show Current Date</button> 
+        <button onclick="time_now()">Show Current Date</button>
         <br>
         <br>
         <p id="displayDate"></p>
         <br>
         <h2>Add Student</h2>
-        <form id="studentForm" onsubmit="validateForm(event)">
-            <label for="studentNumber">Student Number:</label>
-            <input type="number" id="studentNumber" required>
+        <form id="studentForm" onsubmit="add_student(event)">
+            <!-- <label for="studentNumber">Student Number:</label> -->
+            <!-- <input type="number" id="studentNumber" required> -->
             <label for="name">Name:</label>
             <input type="text" id="name" required>
+            <p id="nameError"></p>
             <label for="age">Age:</label>
             <input type="number" id="age" required>
+            <p id="ageError"></p>
             <label for="email">UP Email:</label>
             <input type="email" id="upEmail" required>
+            <p id="emailError"></p>
             <label for="course">Course:</label>
             <select id="course">
                 <option value="BA Food Appreciation">BA Food Appreciation</option>
@@ -117,14 +150,15 @@
     <div class="container">
         <h2>Search Student</h2>
         <input type="text" id="searchStudentNum" placeholder="Enter student number">
-        <button onclick="searchStudent()">Search</button>
+        <button onclick="find_student()">Search</button>
         <p id="searchResults"></p>
     </div>
 
     <div class="container">
         <h2>Display ALL Students</h2>
-        <button onclick="displayStudents()">Display All Students</button>
+        <button onclick="display_list()">Display All Students</button>
         <p id="studentList"></p>
     </div>
 </body>
+
 </html>
